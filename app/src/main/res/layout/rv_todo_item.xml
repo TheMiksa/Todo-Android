@@ -4,14 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/item_background"
+    android:layout_marginVertical="3dp"
     android:padding="5dp"
     android:minHeight="50dp">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </View>
 
     <TextView
         android:id="@+id/tv_text"
@@ -27,11 +23,12 @@
         tools:text="Todo Text" />
 
     <CheckBox
-        android:checked="false"
         android:id="@+id/cb_isDone"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginEnd="10dp"
+        android:checked="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_bin"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,6 +37,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:background="@drawable/trash"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
