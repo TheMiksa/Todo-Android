@@ -2,6 +2,7 @@ package com.example.todoandroid
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.todoandroid.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,9 +16,20 @@ class MainActivity : AppCompatActivity() {
         val adapter = TodoListAdapter(todoList)
         binding.rvTodoList.adapter = adapter
         binding.btnAddItem.setOnClickListener {
-            TodoManager.setItem(TodoItem("Todo: ${Id.getId()}", "main_todo_list"))
-            println("${todoList.size}${todoList}")
-            adapter.notifyItemInserted(todoList.size - 1)
+            val newDuty = binding.etNewDuty.text.trim()
+
+            if (newDuty.isNotEmpty()) {
+                binding.etNewDuty.setText("")
+                TodoManager.setItem(TodoItem("$newDuty", "main_todo_list"))
+                println("${todoList.size}${todoList}")
+                adapter.notifyItemInserted(todoList.size - 1)
+            } else {
+                Toast.makeText(
+                    this,
+                    "Please, add some text for the new duty =)",
+                    Toast.LENGTH_SHORT,
+                ).show()
+            }
         }
     }
 }
